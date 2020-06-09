@@ -19,34 +19,34 @@ Allant also performs data evaluations and larger "Proof of Concepts" for prospec
 ### Push workflow and set secret
 Download this Treasure Box and push it to your TD environment, then set your apikey secret in the project.
 ```
-$ td workflow push allant_demographic_enrich
-$ td wf secrets --project allant_demographic_enrich --set apikey
+$ td workflow push allant_consumer_enrichment
+$ td wf secrets --project allant_consumer_enrichment --set apikey
 ```
 
 ### Prepare database
 This step is only required, if you use the defaults for the <strong>enrich.source_database</strong> and/or <strong>enrich.target_database</strong>, or the value you set these variables to is not a pre-existing database.
 
 ```
-$ td db:create enrich_demog
+$ td db:create enrich_consumer
 ```
 Note:  If the values you set for source and target database variables are different, you will need to run the create for each database that doesn't exist.
 
 ## High Level Process Flow of allant_demographic_enrich.dig
 
 1. Create (and seed) the source database table if it doesn't exist and the create_source variable is set to true 
-2. Create the database table to store the enriched demographics.
-3. Run query to return consumer records for which demographics are desired.
-4. Make Rest API call(s) to AllantGroup to retreive demographic data.
-5. Store enriched demographic data in the specified target database table.
+2. Create the database table to store the enriched consumer data.
+3. Run query to return consumer records for which enriched data is desired.
+4. Make Rest API call(s) to AllantGroup to retreive consumer data.
+5. Store enriched consumer data in the specified target database table.
 
 ## Specifying data to be enriched (Source Data)
-The Allant Consumer demographic enrichment API requires consumer name information, address line 1, and either "City and State" or "zip" to be populated.  
-The workflow is configured to accept two methods for specifying the consumer data you would like to enrich with demographic data.
+The Allant Consumer Data enrichment API requires consumer name information, address line 1, and either "City and State" or "zip" to be populated.  
+The workflow is configured to accept two methods for specifying the consumers you would like to enrich with data.
 
-### 1. Inserting data into the default table (enrich_demog.demog_source)
+### 1. Inserting data into the default table (enrich_consumer.consumer_source)
 Example 1: Inserting records from an existing database table which has separate fields for various name components (i.e. first_name, last_name)
 ```
-insert into enrich_demog.demog_source (key_col, first_name, middle_name, last_name, suffix, address1, address2, city, st, zip, zip4)
+insert into enrich_enrich.consumer_source (key_col, first_name, middle_name, last_name, suffix, address1, address2, city, st, zip, zip4)
 select cast(key_field as varchar)
      , first_name_field
      , middle_name_field
@@ -63,7 +63,7 @@ select cast(key_field as varchar)
 ```
 Example 2: Inserting records from froma an existing database table which has a single field for the consumer name (i.e. name or fullname)
 ```
-insert into enrich_demog.demog_source (key_col, full_name, address1, address2, city, st, zip, zip4)
+insert into enrich_consumer.consumer_source (key_col, full_name, address1, address2, city, st, zip, zip4)
 select cast(key_field as varchar)
      , full_name_field
      , address_line_1_field
@@ -110,8 +110,8 @@ As described in the High Level Process Flow section, this workflow will create a
 
 Note:  The structure of the target table leveraged in this Treasure Box, is based on a select list of attributes that the Allant Group has made available as part of the free trial offering.
 
-- target_database - default "enrich_demog"
-- target_table - default "demog_enrich"
+- target_database - default "enrich_consumer"
+- target_table - default "consumer_enriched_data"
 
 ## Variables that control how the Source/Target tables are created and populated
 As described in the High Level Process Flow section, this workflow will create the source/target tables (if necessary) and load the enriched demographic data into a default table structure.  The following variable determine how the source/target tables are created and/or loaded
