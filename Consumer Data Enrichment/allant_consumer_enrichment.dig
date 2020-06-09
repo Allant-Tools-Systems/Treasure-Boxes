@@ -1,0 +1,84 @@
+# specify the TD database
+_export:
+  td:
+    database: enrich_consumer
+  enrich:
+    source_database: enrich_consumer
+    target_database: enrich_consumer
+    key_column: key_col
+    source_table: consumer_source
+    target_table: consumer_enriched_data
+    #######################################################################################
+    # The following "..._fields_in_order" parameters should be specified as follows:      #
+    #               Please note if any of the fields specified are not string they must   #
+    #               be cast as varchar cast(field1 as varchar)                            #
+    #                                                                                     #
+    #     No Field to pass in - "''"                                                      #
+    #                                                                                     #
+    #     passing in 1 field - "field_name" or "cast(field_name as varchar)"              #
+    #                                                                                     #
+    #     passing in multiple fields - "field1,' ',field2,' ',field..."                   #
+    #         Notes: These fields get concatenated together, so if you don't specify ,' ',#
+    #                between each field there will be no spacing between them             #
+    #                When passing in multiple fields if any of those fields are nullable  #
+    #                you will need to wrap them in a coalesce(field_name,'').             #
+    #######################################################################################
+    
+    #name_fields_in_order is required to be set and the field names must exist on the table ${enrich.source_table}
+    name_fields_in_order:  "coalesce(first_name,''),' ',coalesce(middle_name,''),' ',coalesce(last_name,''),' ',coalesce(suffix,'')"
+    
+    #address1_fields_in_order is required to be set and the field names must exist on the table ${enrich.source_table}
+    address1_fields_in_order: "address1"
+    
+    #address2_fields_in_order is NOT required to be set, but if set the field names must exist on the table ${enrich.source_table}
+    address2_fields_in_order: "''"
+    
+    #city_st_zip_fields_in_order is required to be set and the field names must exist on the table ${enrich.source_table}
+    # Note:  that not all components need to be populated though.  You can provide only zip, or both city and state 
+    city_st_zip_fields_in_order: "coalesce(city,''),' ',coalesce(st,''),' ',coalesce(cast(zip as varchar),'')"
+    source_where_clause: ""
+    source_order_by_clause: ""
+    limit_rows_clause: ""
+    debug: 0
+    replace_table: true
+    create_source_table: true
+
++create_enrich_source_table:
+  if>: ${enrich.create_source}
+  _do:
+      td>: queries/create_enrich_source.sql
+    
++create_enrich_results_table:
+  if>: ${enrich.replace_table}
+  _do:
+      td>: queries/drop_create_enrich_results_table.sql
+  _else_do:
+      td>: queries/create_enrich_results_table.sql
+
++for_each_consumer_enrich:
+  td_for_each>: queries/get_name_addr.sql
+  _do:
+     +show_consumer_info_if_debugging:
+        if>: ${enrich.debug > 0}
+        _do:
+          echo>: about to run append for contact_id=${td.each.key_column} person=${td.each.person}, address=${td.each.address1}, lastline=${td.each.lastline}
+     +call_append_api:
+        http>: https://api.allantgroup.com/onetouch-services/allant/Hygiene/ConsumerEnhancement?person=${td.each.person}&address1=${td.each.address1}&address2=${td.each.address2}&lastline=${td.each.lastline}
+        method: GET
+        content_format: json
+        store_content: true
+        headers:
+          - Accept:  application/json
+          - apikey:  ${secret:apikey}
+          - Content-Type:  application/json
+     +show_data_if_debugging:
+        if>: ${enrich.debug > 0}
+        _do:
+          echo>: Consumer data ${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]}
+               Hygiened data ${JSON.parse(http.last_content)["onetouchHygiene"]}
+     +remove_prior_data:
+        if>: ${enrich.replace_table = false}
+        _do:
+            td>: queries/consumer_enrichment_delete.sql
+     +insert_demog:
+        td>: queries/consumer_enrichment_insert.sql
