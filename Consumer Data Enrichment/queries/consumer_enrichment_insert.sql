@@ -1,0 +1,81 @@
+insert into ${enrich.target_database}.${enrich.target_table} (
+ time
+,${enrich.key_column}
+,full_name
+,first_name
+,middle_name
+,last_name
+,suffix
+,gender
+,address1
+,address2
+,locality
+,region
+,postal_code1
+,postal_code2
+,mailability_score
+,dpv_status
+,address_record_type
+,address_latitude
+,address_longitude
+,country
+,match
+,match_level
+,audience_tier
+,mail_order_buyer
+,mail_order_responder
+,number_of_adults
+,dwelling_type
+,race_code
+,estimated_hh_income
+,home_market_value
+,age_range
+,networth
+,length_of_residence
+,gender_code
+,home_owner_renter
+)
+values (cast(to_unixtime(current_timestamp) as bigint)
+,'${td.each.key_column}'
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_fullName1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_firstName1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_middleName1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_lastName1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_suffix1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["personname_gender1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_primaryAddress"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_secondaryAddress"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_locality"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_region"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_postcode1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_postcode2"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_mailabilityScore"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_dpvStatus"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_recordType"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_latitude"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_longitude"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchHygiene"]["address_countryCode"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH_LEVEL_1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["AUDIENCE_TIER_1"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MAIL_ORDER_BUYER_90315"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MAIL_ORDER_RESPONDER_90316"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["NO_OF_ADULTS_IN_HH_90306"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["DWELLING_TYPE_90302"]}','')
+,case when '${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH"]}' = 'Y' then
+           NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["RACE_CODE_90308"]}','')
+ end
+,case when '${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH"]}' = 'Y' then
+           NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["ESTIMATED_HH_INCOME_90309"]}','')
+ end
+,case when '${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH"]}' = 'Y' then
+           NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["HOME_MARKET_VALUE_90310"]}','')
+ end
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["AGE_RANGE_90305"]}','')
+,case when '${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["MATCH"]}' = 'Y' then
+           NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["NETWORTH_90312"]}','')
+ end
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["LENGTH_OF_RESIDENCE_90300"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["GENDER_CODE_90304"]}','')
+,NULLIF('${JSON.parse(http.last_content)["onetouchConsumerEnhancement"]["HOMEOWNER_RENTER_90303"]}','')
+);
