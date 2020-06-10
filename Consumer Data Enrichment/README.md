@@ -83,10 +83,11 @@ Skip the next section and proceed to the "Specifying where to store enriched dem
 ### 2. Overriding the source variables (source_database, source_table)
 The query used to retreive the Consumer data that is to be enriched was written to support passing in variables (database, tablename, field_names).  This allows the workflow to read source data from an existing database table, without having to modify SQL query file.  Following is a listing of the variables and a brief description of how to use them:
 
-#### Required variables:
+#### Database and Table Name variables:
 - source_database -  Should contain the name of a pre-existing database
 - source_table - Should contain the name of a pre-existing database table from which to select the consumer data.
 - key_column (required) - Should contain the column name for the field that is considered the unique key for a consumers name/address (used to delete prior data in the target table when the replace_table variable is set to false)	
+- create_source_table - This is a boolean variable to determine if the workflow should create a default source table with a sample consumer record.   Defaulted to true, but should be set to false if you are setting source_table to an existing table.
 
 Notes:
 - If the table specified in the "source_table" variable doesn't exist and the "create_source_table" variable is set to true, the workflow will create the source table and populate a sample consumer record.
