@@ -75,7 +75,8 @@ select cast(key_field as varchar)
   from your_databasename.your_tablename
 ;
 ```
-Note:  In both of the insert statements above you can either remove any columns that don't exist in your source table, from both the column list and select clause, or just place "cast(null as varchar)" in the select clause for each of the columns for which your source table doesn't have a corresponding field.
+Notes:
+- In both of the insert statements above you can either remove any columns that don't exist in your source table, from both the column list and select clause, or just place "cast(null as varchar)" in the select clause for each of the columns for which your source table doesn't have a corresponding field.
 
 Skip the next section and proceed to the "Specifying where to store enriched demographic data (Target Data)" section
 
@@ -87,9 +88,10 @@ The query used to retreive the Consumer data that is to be enriched was written 
 - source_table - Should contain the name of a pre-existing database table from which to select the consumer data.
 - key_column (required) - Should contain the column name for the field that is considered the unique key for a consumers name/address (used to delete prior data in the target table when the replace_table variable is set to false)	
 
-Notes:  If the table specified in the "source_table" variable doesn't exist and the "create_source_table" variable is set to true, the workflow will create the source table and populate a sample consumer record.
-        If the "replace_table" variable is set to true, the workflow will drop and recreate the target table and the enriched consumer data will be inserted as it is processed.
-        If the "replace_table" variable is set to false, it will only create the target table if it doesn't already exist. Enriched consumer data will be upserted (based on the column specified in the "key_column" variable) into the target table specified.
+Notes:
+- If the table specified in the "source_table" variable doesn't exist and the "create_source_table" variable is set to true, the workflow will create the source table and populate a sample consumer record.
+- If the "replace_table" variable is set to true, the workflow will drop and recreate the target table and the enriched consumer data will be inserted as it is processed.
+- If the "replace_table" variable is set to false, it will only create the target table if it doesn't already exist. Enriched consumer data will be upserted (based on the column specified in the "key_column" variable) into the target table specified.
 
 #### Field Name Variables: (all but "address2_fields_in_order" are required)
 
