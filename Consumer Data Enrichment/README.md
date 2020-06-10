@@ -46,7 +46,7 @@ The workflow is configured to accept two methods for specifying the consumers yo
 ### 1. Inserting data into the default table (enrich_consumer.consumer_source)
 Example 1: Inserting records from an existing database table which has separate fields for various name components (i.e. first_name, last_name)
 ```
-insert into enrich_enrich.consumer_source (key_col, first_name, middle_name, last_name, suffix, address1, address2, city, st, zip, zip4)
+insert into enrich_consumer.consumer_source (key_col, first_name, middle_name, last_name, suffix, address1, address2, city, st, zip, zip4)
 select cast(key_field as varchar)
      , first_name_field
      , middle_name_field
