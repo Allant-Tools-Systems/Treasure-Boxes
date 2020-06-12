@@ -18,10 +18,6 @@ Allant also performs data evaluations and larger "Proof of Concepts" for prospec
 
 
 
-### Consumer names and postal addresses (Consumer Data Enrichment)
-The included workflow leverages variables to map name and address fields from the specified database (enrich.source_database) and table (enrich.source_table).
-If you do not overide the database variables (enrich.source_database, enrich.target_database), you will need to run the command list under "Prepare database".
-The workflow will create the necessary source table (and "seed" it with one consumer record) if the table doesn't exist or is empty.  The structure of this default table contains fields for both parsed and/or concatenated name and address fields.
 
 
 ## Allant Data Solutions
