@@ -1,5 +1,5 @@
 # Consumer Data Enrichment (Allant Group - API)
-This Treasure Box demonstrates how to leverage the Allant Group ConsumerEnhancement API to retrieve third party data for consumers.  Which can then be used in subsequent personalization, predictive scoring and other segmentation related processes.
+This Treasure Box demonstrates how to leverage the Allant Group Consumer Enhancement API to retrieve third party data for consumers.  Which can then be used in subsequent personalization, predictive scoring and other segmentation related processes.
 
 ## Prerequisites
 ### Consumer names and geographic addresses
