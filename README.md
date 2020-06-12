@@ -1,6 +1,5 @@
 # Treasure-Boxes
-Allant Group - ARM Treasure Data - Treasure Boxes
-As an ARM Treasure Data strategic partner (<a href="https://www.allantgroup.com/about/partners/">Partners</a>) The Allant Group provides Data and Services to assist customers with CDP implementations and/or enhancements.  The Treasure Boxes in this repository are working examples of how to integrate Allant Data Services into your Treasure Data enviroment.  Following is a list of the Treasure Boxes currently available:
+  As an ARM Treasure Data strategic partner (<a href="https://www.allantgroup.com/about/partners/">Partners</a>) The Allant Group provides Data and Services to assist customers with CDP implementations and/or enhancements.  The Treasure Boxes in this repository are working examples of how to integrate Allant Data Services into your Treasure Data enviroment.  Following is a list of the Treasure Boxes currently available:
 
 - <strong>Consumer Data Enrichment</strong> - This Treasure Box demonstrates how to leverage the Allant Group ConsumerEnhancement API to retrieve third party data for consumers.  Which can then be used in subsequent personalization, predictive scoring and other segmentation related processes.
 - <strong>Name & Postal Address Hygiene</strong> - Coming Soon
