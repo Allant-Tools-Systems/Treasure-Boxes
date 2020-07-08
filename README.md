@@ -18,12 +18,12 @@ Allant also performs data evaluations and larger "Proof of Concepts" for prospec
 
 
 
-
-## Allant Data Solutions
+## Additional Information
+### Allant Data Solutions
 ![Allant Data Solutions](IMG/Allant_data_solutions.jpg)
 
 
-## Allant Data Categories
+### Allant Data Categories
 ![Allant Data Categories](IMG/Allant_data_categories.jpg)
 ![Allant Segmentation Derived and Auto](IMG/Allant_data_segmentation_auto.jpg)
 ![Allant Data Offerings](IMG/Allant_data_offerings.jpg)
