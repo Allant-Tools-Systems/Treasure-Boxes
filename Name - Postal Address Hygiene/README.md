@@ -13,7 +13,7 @@ An Allant Group apikey is required to evaluate/test Allant's Consumer Data Enric
 Allant also performs data evaluations and larger "Proof of Concepts" for prospective clients.  For larger scale testing and/or enrichment processes, Allant recommends batch/file processing when the real-time api isn't required.
 
 
-![apikey](IMG/Allant_apikey_request.jpg)
+![apikey](../IMG/Allant_apikey_request.jpg)
 
 ## Initial Setup
 ### Push workflow and set secret
@@ -159,10 +159,11 @@ city_st_zip_fields_in_order: "coalesce(city,''),', ',coalesce(state,''),' ',coal
 city_st_zip_fields_in_order: "cast(zip as varchar)"
 ```
 
-## Allant Data Categories
-![Allant Data Categories](IMG/Allant_data_categories.jpg)
-![Allant Segmentation Derived and Auto](IMG/Allant_data_segmentation_auto.jpg)
-![Allant Data Offerings](IMG/Allant_data_offerings.jpg)
+## Additional Information
+### Allant Data Categories
+![Allant Data Categories](../IMG/Allant_data_categories.jpg)
+![Allant Segmentation Derived and Auto](../IMG/Allant_data_segmentation_auto.jpg)
+![Allant Data Offerings](../IMG/Allant_data_offerings.jpg)
 
 ## Others
 If you have any questions, please contact your Customer Success/Solution Architect of TD.
