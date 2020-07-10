@@ -1,8 +1,8 @@
 # Name - Postal Address Hygiene (Allant Group - API)
-This Treasure Box demonstrates how to leverage the Allant Group Consumer Hygiene API to cleanse and standardize consumer Names and Postal addresses.
+This Treasure Box demonstrates how to leverage the Allant Group Consumer Hygiene API to cleanse and standardize consumer names and postal addresses.
 
 ## Prerequisites
-### Consumer names and geographic addresses
+### Consumer names and postal addresses
 The included workflow leverages variables to map name and address fields from the database specified in a variable (hygiene.source_database) and table (hygiene.hygiene_source).
 If you do not overide the database variables (enrich.source_database, enrich.target_database), you will need to run the command list under "Prepare database".
 The workflow will create the necessary source table (and "seed" it with some consumer records) if the table doesn't exist or is empty.  The structure of this default table contains fields for both parsed and/or concatenated name and address fields.
