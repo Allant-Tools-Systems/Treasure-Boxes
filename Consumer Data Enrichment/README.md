@@ -159,7 +159,8 @@ city_st_zip_fields_in_order: "coalesce(city,''),', ',coalesce(state,''),' ',coal
 city_st_zip_fields_in_order: "cast(zip as varchar)"
 ```
 
-## Allant Data Categories
+## Additional Information
+### Allant Data Categories
 ![Allant Data Categories](../IMG/Allant_data_categories.jpg)
 ![Allant Segmentation Derived and Auto](../IMG/Allant_data_segmentation_auto.jpg)
 ![Allant Data Offerings](../IMG/Allant_data_offerings.jpg)
