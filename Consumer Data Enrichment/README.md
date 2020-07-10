@@ -13,7 +13,7 @@ An Allant Group apikey is required to evaluate/test Allant's Consumer Data Enric
 Allant also performs data evaluations and larger "Proof of Concepts" for prospective clients.  For larger scale testing and/or enrichment processes, Allant recommends batch/file processing when the real-time api isn't required.
 
 
-![apikey](IMG/Allant_apikey_request.jpg)
+![apikey](../IMG/Allant_apikey_request.jpg)
 
 ## Initial Setup
 ### Push workflow and set secret
