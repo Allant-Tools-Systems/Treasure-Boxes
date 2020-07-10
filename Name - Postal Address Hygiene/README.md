@@ -160,10 +160,12 @@ city_st_zip_fields_in_order: "cast(zip as varchar)"
 ```
 
 ## Additional Information
-### Allant Data Categories
-![Allant Data Categories](../IMG/Allant_data_categories.jpg)
-![Allant Segmentation Derived and Auto](../IMG/Allant_data_segmentation_auto.jpg)
-![Allant Data Offerings](../IMG/Allant_data_offerings.jpg)
+### Sample Source Data
+![Sample Source Data](../IMG/Allant_Hygiene_Source_data.jpg)
+### Sample Name Fields returned
+![Sample Name Fields returned](../IMG/Allant_Hygiened_data_name_fields_1.jpg)
+### Sample Address Fields returned
+![Sample Name Fields returned](../IMG/Allant_Hygiened_data_address_fields_1.jpg)
 
 ## Others
 If you have any questions, please contact your Customer Success/Solution Architect of TD.
