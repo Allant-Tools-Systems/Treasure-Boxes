@@ -19,8 +19,8 @@ Allant also performs data evaluations and larger "Proof of Concepts" for prospec
 ### Push workflow and set secret
 Download this Treasure Box and push it to your TD environment, then set your apikey secret in the project.
 ```
-$ td workflow push allant_consumer_enrichment
-$ td wf secrets --project allant_consumer_enrichment --set apikey
+$ td workflow push "Allant Hygiene"
+$ td wf secrets --project "Allant Hygiene" --set apikey
 ```
 
 ### Prepare database
@@ -31,7 +31,7 @@ $ td db:create allant_hygiene
 ```
 Note:  If the values you set for source and target database variables are different, you will need to run the create for each database that doesn't exist.
 
-## High Level Process Flow of allant_demographic_enrich.dig
+## High Level Process Flow of allant_hygiene.dig
 
 1. Create (and seed) the source database table if it doesn't exist and the create_source variable is set to true 
 2. Create the database table to store the hygiened consumer data.
