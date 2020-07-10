@@ -1,5 +1,5 @@
 # Name - Postal Address Hygiene (Allant Group - API)
-This Treasure Box demonstrates how to leverage the Allant Group Consumer Hygiene API to cleanse and standardize consumer names and postal addresses.
+This Treasure Box demonstrates how to leverage the Allant Group Consumer Hygiene API to cleanse and standardize consumer names and postal addresses.  A data dictionary of the cleansed/standardized fields returned can be found in the <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/tree/master/Metadata">Metadata Folder</a> (file: <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/blob/master/Metadata/Data%20Dictionary%20-%20Hygiene.xlsx">Data Dictionary - Hygiene.xlsx</a>)
 
 ## Prerequisites
 ### Consumer names and postal addresses
