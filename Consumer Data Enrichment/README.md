@@ -19,8 +19,8 @@ Allant also performs data evaluations and larger "Proof of Concepts" for prospec
 ### Push workflow and set secret
 Download this Treasure Box and push it to your TD environment, then set your apikey secret in the project.
 ```
-$ td workflow push allant_consumer_enrichment
-$ td wf secrets --project allant_consumer_enrichment --set apikey
+$ td workflow push "Allant Consumer Enrichment"
+$ td wf secrets --project "Allant Consumer Enrichment" --set apikey
 ```
 
 ### Prepare database
