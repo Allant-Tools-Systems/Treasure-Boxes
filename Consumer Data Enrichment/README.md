@@ -31,7 +31,7 @@ $ td db:create enrich_consumer
 ```
 Note:  If the values you set for source and target database variables are different, you will need to run the create for each database that doesn't exist.
 
-## High Level Process Flow of allant_demographic_enrich.dig
+## High Level Process Flow of allant_consumer_enrichment.dig
 
 1. Create (and seed) the source database table if it doesn't exist and the create_source variable is set to true 
 2. Create the database table to store the enriched consumer data.
