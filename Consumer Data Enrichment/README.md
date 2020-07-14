@@ -61,7 +61,7 @@ select cast(key_field as varchar)
   from your_databasename.your_tablename
 ;
 ```
-Example 2: Inserting records from froma an existing database table which has a single field for the consumer name (i.e. name or fullname)
+Example 2: Inserting records from an existing database table which has a single field for the consumer name (i.e. name or fullname)
 ```
 insert into enrich_consumer.consumer_source (key_col, full_name, address1, address2, city, st, zip, zip4)
 select cast(key_field as varchar)
