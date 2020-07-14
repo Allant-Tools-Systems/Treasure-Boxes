@@ -62,7 +62,7 @@ _export:
         if>: ${enrich.debug > 0}
         _do:
           echo>: about to run append for contact_id=${td.each.key_column} person=${td.each.person}, address=${td.each.address1}, lastline=${td.each.lastline}
-     +call_append_api:
+     +call_enrichment_api:
         http>: https://api.allantgroup.com/onetouch-services/allant/Hygiene/ConsumerEnhancement?person=${td.each.person}&address1=${td.each.address1}&address2=${td.each.address2}&lastline=${td.each.lastline}
         method: GET
         content_format: json
@@ -80,5 +80,5 @@ _export:
         if>: ${enrich.replace_table = false}
         _do:
             td>: queries/consumer_enrichment_delete.sql
-     +insert_demog:
+     +insert_enriched_data:
         td>: queries/consumer_enrichment_insert.sql
