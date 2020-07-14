@@ -44,7 +44,7 @@ _export:
     create_source_table: true
 
 +create_enrich_source_table:
-  if>: ${enrich.create_source}
+  if>: ${enrich.create_source_table}
   _do:
       td>: queries/create_enrich_source.sql
     
