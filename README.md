@@ -3,7 +3,6 @@
 
 - <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/tree/master/Consumer%20Data%20Enrichment"><strong>Consumer Data Enrichment</strong></a> - This Treasure Box demonstrates how to leverage the Allant Group ConsumerEnhancement API to retrieve third party data for consumers.  Which can then be used in subsequent personalization, predictive scoring and other segmentation related processes.  This Treasure Box is setup for some commonly used enrichment attributes, the data dictionary for then <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/blob/master/Metadata/Data%20Dictionary%20-%20Enrichment%20-%20Sample.xlsx">sample attributes</a> (as well as a more <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/blob/master/Metadata/Data%20Dictionary%20-%20Enrichment.xlsx">comprehensive list</a>) can be found in the <a href="https://github.com/Allant-Tools-Systems/Treasure-Boxes/tree/master/Metadata">Metadata directory</a>.
 - <strong>Name & Postal Address Hygiene</strong> - Coming Soon
-- <strong>Anonymous Consumer Data Enrichment (ALC Link2Me)</strong> - Coming Soon
 
 ## Prerequisites
 ### Allant Group apikey
